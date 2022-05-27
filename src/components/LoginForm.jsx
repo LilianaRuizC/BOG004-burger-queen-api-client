@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { fetchDB } from '../conection/fetch'
 import Button from './ui/Button'
 
 const LoginForm = () => {
+
+  const navigate = useNavigate()
 
   const [datos, setDatos] = useState({
     email: "",
@@ -38,16 +41,18 @@ const LoginForm = () => {
         "password": datos.password
       })
       .then(data => {
-        console.log(data)
-        console.log(data.accessToken)
+        
         localStorage.setItem('token', data.accessToken);
-      })
+        localStorage.setItem('user', JSON.stringify(data.user));
 
+        if(data?.user?.roles?.admin) navigate("/management")
+        if(data?.user?.roles?.chef) navigate("/chef")
+        if(data?.user?.roles?.waiter) navigate("/waiter")
+
+      })
       console.log(`Vamos a enviar la data: `, datos)
     }
   }
-
-  
 
   return (
     <form className="formulario" action="">

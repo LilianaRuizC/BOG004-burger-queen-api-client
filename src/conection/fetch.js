@@ -8,6 +8,5 @@ export const fetchDB = (url, method, data) => {
     },
     body: JSON.stringify(data)
   })
-  .then( response => response.json())
-  
+  .then(response => response.json())
 }
