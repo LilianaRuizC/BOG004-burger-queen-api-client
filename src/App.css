@@ -4,6 +4,7 @@
   --green: #A0E2D4;
   --beige: #FAD491;
   --gray: #EBECF0;
+  --gray-light: #fbfbfb;
   --text-bold: #443C3C;
   --text-light: #7C7676;
   --text-error: red;
@@ -13,6 +14,7 @@
 body {
   font-family: 'Roboto';
   color: var(--text-bold);
+  background-color: var(--gray-light);
  
 }
  h2 {
@@ -95,6 +97,9 @@ body {
   font-weight: bold;
   color: var(--text-bold);
 }
+.btn:hover {
+  cursor: pointer;
+}
 .btn-pink{
   background-color: var(--pink);
   color: var(--text-bold);
@@ -144,10 +149,18 @@ body {
 
 
 .base {
-  background-color: var(--pink);
   color: var(--text-bold);
   font-weight: bold;
   padding: 15px;
+}
+
+.bg-pink {
+  background-color: var(--pink);
+}
+
+.bg-green {
+  background-color: var(--green);
+
 }
 
 .resumen {
