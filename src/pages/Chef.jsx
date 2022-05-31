@@ -10,16 +10,20 @@ const Chef = () => {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
+    if (localStorage.getItem('user')) {
 
-    const {roles} = JSON.parse(localStorage.getItem("user"))
-    console.log(roles)
+      const {roles} = JSON.parse(localStorage.getItem("user"))
+      console.log(roles)
 
-    if(localStorage.getItem("token") &&  roles.chef){
-      setShowPage(true)
+      if(localStorage.getItem("token") &&  roles.chef){
+        setShowPage(true)
+      } else {
+        if (roles.waiter) navigate("/waiter")
+        if (roles.admin) navigate("/management")
+      }
     } else {
       navigate("/login")
     }
-
   })
 
   return (
