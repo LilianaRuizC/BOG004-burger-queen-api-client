@@ -32,3 +32,4 @@ it('componente LoginForm',async () => {
 
      })
     })
+    //de control
