@@ -95,6 +95,7 @@ const LoginForm = () => {
         name="email"
         value={datos.email}
         onChange={handleChange}
+        data-testid= "login-email-input"
       />
       <input 
         className="input" 
@@ -115,11 +116,13 @@ const LoginForm = () => {
           value={"Iniciar Sesión"} 
         />
       </button>
-      <p className='text-error'>
+       <p className='text-error' data-testid= "login-error-message">
+        
         {
           datos.errorMessage
         }
       </p>
+      
     </form>
   )
 }
