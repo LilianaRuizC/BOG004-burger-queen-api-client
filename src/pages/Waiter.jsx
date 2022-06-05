@@ -32,8 +32,7 @@ const Waiter = () => {
         showPage && (
           <>
             <Header rol={"Mesero"}/>
-            <div className="container" 
-             data-testid="successfulEntry">
+            <div className="container" data-testid="successful-entry">
               <div className="row">
                 <Comanda />
                 <Factura />
