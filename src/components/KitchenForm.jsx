@@ -4,9 +4,14 @@ import { fetchDB } from '../conection/fetch'
 import { useOrders } from '../context/orders/OrdersContext'
 import Button from './ui/Button'
 
+// 1. Traer las ordenes guardadas en la bd mediante el fetch
+// 2. Hacer el foreach o map de las ordenes (pintar orden/orden)
+// 3. Destructuramos data recibida de a acuerdo a los requerimientos de nuestra estructura inicial.
+
 const KitchenForm = () => {
 
   const { 
+    orders,
     order,
     setClient,
     setUserId,
@@ -16,12 +21,14 @@ const KitchenForm = () => {
   useEffect(() => {
     fetchDB("orders", "GET", "", localStorage.getItem("token"))
     .then(data => {
+      console.log('esto se cocina!!!(data)')
+      //const{client,idproduct} =dataFood
       if (!data) {
         localStorage.removeItem('token')
         localStorage.removeItem('user')
         navigate("/")
       }
-      setProducts(data)
+      setOrders(data)
     })
   }, [])
 
