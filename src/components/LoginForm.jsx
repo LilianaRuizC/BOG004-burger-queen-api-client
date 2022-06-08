@@ -28,8 +28,6 @@ const LoginForm = () => {
         return "Correo y contraseña son obligatorios."
       case "Cannot find user":
         return "Usuario no registrado."
-      case "Password is too short":
-        return "La contraseña debe contener al menos 6 caracteres."
       case "Incorrect password":
         return "Contraseña incorrecta."
       case "Email format is invalid":
@@ -116,7 +114,7 @@ const LoginForm = () => {
           value={"Iniciar Sesión"} 
         />
       </button>
-       <p className='text-error' data-testid= "login-error-message">
+       <p id = 'id-message-error-record' className='text-error' data-testid= "login-error-message">
         
         {
           datos.errorMessage
