@@ -8,7 +8,6 @@ const Chef = () => {
   const [showPage, setShowPage] = useState(false)
   const navigate = useNavigate()
 
-
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (localStorage.getItem('user')) {
