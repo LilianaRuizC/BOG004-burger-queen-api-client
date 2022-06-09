@@ -114,7 +114,7 @@ const LoginForm = () => {
           value={"Iniciar Sesión"} 
         />
       </button>
-       <p id = 'id-message-error-record' className='text-error' data-testid= "login-error-message">
+       <p  className='text-error' data-testid= "login-error-message">
         
         {
           datos.errorMessage
