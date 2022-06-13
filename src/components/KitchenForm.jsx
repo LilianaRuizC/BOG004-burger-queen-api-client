@@ -19,6 +19,10 @@ const KitchenForm = () => {
         setDataFood(orderPending)
     })
   }, [])
+
+  const [dataEnd, setDataEnd]= useState('')
+
+
   
   return (
     <>
@@ -50,7 +54,7 @@ const KitchenForm = () => {
                     <p>Hora</p>
                   </div>
                   <div className="columna total-columna-resumen"></div>
-                  {order.dateEntry}
+                  {dataEnd}
                 </div> 
               </div>
             </div>
@@ -58,6 +62,7 @@ const KitchenForm = () => {
                 className="input btn-confirmar" 
                 type="submit" 
                 value="Listo para entrega." 
+                onClick={setDataEnd.Date.now()}
               />
           </div>
         ))

@@ -10,7 +10,7 @@ export const OrdersProvider = ({children}) => {
     "client": "",
     "products": [],
     "status": "pending",
-    "dateEntry": new Date()
+    "dateEntry": Date.now()
   })
 
   
