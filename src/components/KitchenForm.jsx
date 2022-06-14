@@ -43,13 +43,7 @@ const KitchenForm = () => {
                 </div> 
             ))
             }
-                <div className="fila">
-                  <div className="columna Hora-columna-resumen">
-                    <p>Hora de pedido: </p>
-                  </div>
-                  <div className="columna total-columna-resumen"></div>
-                  { order.dateEntry}
-                </div> 
+               
               </div>
             </div>
               <input
@@ -91,19 +85,15 @@ const KitchenForm = () => {
             }
                 <div className="fila">
                   <div className="columna Hora-columna-resumen">
-                    <p>Hora de pedido: </p>
+                    <p>Tiempo de Preparación: </p>
                   </div>
-                  <div className="columna total-columna-resumen"></div>
-                  { Math.floor((new Date(order.dateProcessed) - new Date(order.dateEntry)) / 60000) } minutos
+                  <div className="columna total-columna-resumen">
+                  { Math.floor((new Date(order.dateProcessed) - new Date(order.dateEntry)) / 60000) } min.
+                  </div>
                 </div> 
               </div>
             </div>
-              <input
-                className="input btn-confirmar" 
-                type="submit" 
-                value="Listo para entrega." 
-                onClick={ () => deliverOrder(order.id)}
-              />
+             
           </div>
         )})
       }) 
