@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react"
+import React, { createContext, useContext, useState, useEffect } from "react"
 import { fetchDB } from "../../conection/fetch"
 
 const OrdersContext = createContext()
@@ -10,10 +10,19 @@ export const OrdersProvider = ({children}) => {
     "client": "",
     "products": [],
     "status": "pending",
-    "dateEntry": Date.now()
+    "dateEntry": new Date()
   })
 
-  
+  const [orders, setOrders]= useState([])
+
+  useEffect(() => {
+    fetchDB("orders", "GET", "", localStorage.getItem("token"))
+    .then(data => {
+      const orderPending = data.filter((order)=>
+        order.status)
+        setOrders(orderPending)
+    })
+  }, [])
 
   const cleanOrder = () => {
     setOrder({
@@ -23,7 +32,6 @@ export const OrdersProvider = ({children}) => {
     })
   }
 
-  const [orders, setOrders] = useState([])
 
   const setClient = (client) => {
     setOrder({
@@ -32,13 +40,33 @@ export const OrdersProvider = ({children}) => {
     })
   }
 
-
-
   const setUserId = (userId) => {
     setOrder({
       ...order,
       userId
     })
+  }
+
+  const deliverOrder = (orderId) => {
+
+    console.log('orderId', orderId)
+
+    //Editar el state
+
+    //guardar en BD
+    const data = {
+      "status": "delivered",
+      "dateProcessed": new Date()
+  }
+
+
+    fetchDB(`orders/${orderId}`, "PATCH", data, localStorage.getItem("token"))
+    .then((resultado) => console.log("Datos actualizados: ", resultado))
+
+    // const dateProcessed = Math.floor(timeMs/1000)
+    // console.log('dprocessed', dateProcessed)
+
+    
   }
 
   const setProduct = (product, operation) => {
@@ -82,13 +110,10 @@ export const OrdersProvider = ({children}) => {
         })
       }
     }
-
   }
 
   const removeProductFromOrder = () => {
-
     const resultado = order.products.filter(product => product.productId >= 1)
-
     setOrder({
       ...order,
       products: resultado
@@ -107,7 +132,6 @@ export const OrdersProvider = ({children}) => {
   }
 
   
-
   return (
     <OrdersContext.Provider
       value = {{
@@ -115,6 +139,7 @@ export const OrdersProvider = ({children}) => {
         order,
         setClient,
         setUserId,
+        deliverOrder,
         setProduct,
         confirmOrder,
         cleanOrder,
