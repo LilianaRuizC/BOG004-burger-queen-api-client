@@ -13,7 +13,6 @@ const Chef = () => {
     if (localStorage.getItem('user')) {
 
       const {roles} = JSON.parse(localStorage.getItem("user"))
-      console.log(roles)
 
       if(localStorage.getItem("token") &&  roles.chef){
         setShowPage(true)
@@ -39,7 +38,5 @@ const Chef = () => {
     </>
   )
 }
-prueba de cambio
-
 
 export default Chef
