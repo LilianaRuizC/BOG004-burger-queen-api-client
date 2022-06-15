@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from 'react'
-import { fetchDB } from '../conection/fetch'
 import { useOrders } from '../context/orders/OrdersContext'
 
 // 1. Traer las ordenes guardadas en la bd mediante el fetch
