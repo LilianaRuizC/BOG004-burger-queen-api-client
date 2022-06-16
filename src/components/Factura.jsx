@@ -1,5 +1,7 @@
 import React from 'react'
 import { useOrders } from '../context/orders/OrdersContext'
+import Button from './ui/Button'
+import ControlOrders from './ControlOrders'
 
 const Factura = () => {
 
@@ -53,6 +55,26 @@ const Factura = () => {
           </div> 
         </div>
       </div>
+      <a href="#miModal">
+      <button
+        className="btn-transparent"
+        type="submit" 
+      >
+        <Button 
+          color={"btn-green"} 
+          value={"Control Pedidos"} 
+        />
+      </button>
+      </a>
+
+      <div id="miModal" class="modal">
+        <div className="modal-contenido">
+          <a className="close-modal" href="#">X</a>
+          <h2>Pedidos listos para entrega</h2>
+          < ControlOrders/>
+        </div>  
+      </div>
+      
       <input 
         onClick={
           ()=>{
