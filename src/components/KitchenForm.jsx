@@ -41,7 +41,6 @@ const KitchenForm = () => {
                 </div> 
             ))
             }
-               
               </div>
             </div>
               <input
@@ -52,14 +51,14 @@ const KitchenForm = () => {
               />
           </div>
         )})
-      }) 
+      }
 
 
       <h2>Entregadas</h2>
       {
         orders && orders.map(order => {
           console.log(order)
-          if(order.status === "delivered") return (
+          if(order.status === "delivering") return (
           <div key={order.id} className="columna-md-50 contenedor-resumen">
             <div className="menu">
               <div className="table">
@@ -91,7 +90,6 @@ const KitchenForm = () => {
                 </div> 
               </div>
             </div>
-             
           </div>
         )})
       }) 

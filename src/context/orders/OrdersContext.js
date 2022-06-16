@@ -51,14 +51,35 @@ export const OrdersProvider = ({children}) => {
 
     console.log('orderId', orderId)
 
-    //Editar el state
-
+    
     //guardar en BD
     const data = {
-      "status": "delivered",
+      "status": "delivering",
       "dateProcessed": new Date()
   }
 
+  //Editar el state
+
+    fetchDB(`orders/${orderId}`, "PATCH", data, localStorage.getItem("token"))
+    .then((resultado) => console.log("Datos actualizados: ", resultado))
+
+    // const dateProcessed = Math.floor(timeMs/1000)
+    // console.log('dprocessed', dateProcessed)
+
+    
+  }
+
+  const finishOrder = (orderId) => {
+
+    console.log('orderId', orderId)
+
+    
+    //guardar en BD
+    const data = {
+      "status": "delivered"
+  }
+
+  //Editar el state
 
     fetchDB(`orders/${orderId}`, "PATCH", data, localStorage.getItem("token"))
     .then((resultado) => console.log("Datos actualizados: ", resultado))
@@ -140,6 +161,7 @@ export const OrdersProvider = ({children}) => {
         setClient,
         setUserId,
         deliverOrder,
+        finishOrder,
         setProduct,
         confirmOrder,
         cleanOrder,
