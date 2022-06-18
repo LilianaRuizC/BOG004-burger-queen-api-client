@@ -7,9 +7,9 @@ export const ManagementProvider = ({children}) => {
         "email": "",
         "password": "",
         "roles": {
-          "admin": true,
-          "waiter": true,
-          "chef": true
+          "admin": false,
+          "waiter": false,
+          "chef": false
         }
     })
     const [users, setUsers]= useState([])
@@ -17,21 +17,22 @@ export const ManagementProvider = ({children}) => {
     useEffect(() => {
       fetchDB("users", "GET", "", localStorage.getItem("token"))
       .then(data => {
-        const registeredUsers = data.filter((user)=>
-          user.email)
-          
-          setUsers(registeredUsers)
-          console.log("esto es data",data)
+          setUsers(data)
       })
     }, [])
 
     return (
         <ManagementContext.Provider
           value = {{
+            user,
+            users
            
           }}
         >
           {children}
         </ManagementContext.Provider>
       )
-}
+   }
+      export const useCollaborator = () => {
+        return useContext(ManagementContext)
+      }
