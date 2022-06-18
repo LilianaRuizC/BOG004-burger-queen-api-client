@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from '../components/Header'
-
+import AdminTools from '../components/AdminTools'
+import { ManagementProvider } from '../context/orders/ManagementContext'
 const Management = () => {
 
   const [showPage, setShowPage] = useState(false)
@@ -25,18 +26,18 @@ const Management = () => {
   })
   
   return (
-    <>
+    <ManagementProvider>
       {
         showPage && (
           <>
             <Header rol={"Management"}/>
             <div className="container">
-              admin
+              <AdminTools/>
             </div>
           </>
         )
       }
-    </>
+    </ManagementProvider>
   )
 }
 
