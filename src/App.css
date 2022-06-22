@@ -416,7 +416,9 @@ ul, ol {
   color: var(--text-bold);
   background-color: var(--green);
 }
-
+.bi{
+  cursor: pointer;
+}
 .btn-creat{
   margin: 5px;
   color: var(--text-bold);
@@ -429,6 +431,11 @@ ul, ol {
   margin: 5px;
   color: var(--text-bold);
   background-color: var(--pink);
+}
+
+.checkbox{
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (min-width: 800px) {

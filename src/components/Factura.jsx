@@ -67,7 +67,7 @@ const Factura = () => {
       </button>
       </a>
 
-      <div id="miModal" class="modal">
+      <div id="miModal" className="modal">
         <div className="modal-contenido">
           <a className="close-modal" href="#">X</a>
           <h2>Pedidos listos para entrega</h2>
