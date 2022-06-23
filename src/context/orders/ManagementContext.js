@@ -45,7 +45,7 @@ export const ManagementProvider = ({children}) => {
         cancelButtonColor: '#d33',
         confirmButtonText: 'Si, eliminarlo!'
       }).then((result) => {
-        
+
         if (result.isConfirmed) {
           setUsers(
             users.filter( user => user.id !== userId )
@@ -76,6 +76,11 @@ export const ManagementProvider = ({children}) => {
       .then((resultado) => console.log("Datos enviados: ", resultado))
     }
 
+    const editUserContext = (userEdit) => {
+      fetchDB(`users/${userEdit.id}`, "PATCH", userEdit, localStorage.getItem("token"))
+      .then((resultado) => console.log("Usuario editado: ", resultado))
+    }
+
     return (
         <ManagementContext.Provider
           value = {{
@@ -83,7 +88,8 @@ export const ManagementProvider = ({children}) => {
             users,
             deleteUser,
             creatUser,
-            handleInput
+            handleInput,
+            editUserContext
           }}
         >
           {children}
